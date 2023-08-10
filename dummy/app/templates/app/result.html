@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            display: flex;
+        }
+
+        table.fixed {
+            table-layout: fixed;
+        }
+
+        table.fixed td {
+            overflow: hidden;
+        }
+
+        table {
+            border: 1px solid black;
+            width: 50%;
+            border-collapse: collapse;
+
+        }
+
+        table tr,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <!-- <div class="box1"> -->
+        <table class="fixed">
+            <tr>
+                <th colspan="2">General</th>
+            </tr>
+            <tr>
+                <th>Sub-Section</th>
+                <th>Percentage</th>
+            </tr>
+            {% for result in results|slice:"2:" %}
+            <tr>
+
+                <td>{{result.title}}</td>
+                {% if result.percentage > 80 %}
+                <td>A</td>
+                {% elif result.percentage < 80 and result.percentage > 50 %}
+                <td>B</td>
+                {% else %}
+                <td>F</td>
+                {%endif%}
+
+            </tr>
+            {% endfor %}
+        </table>
+        <!-- </div> -->
+        <!-- <div class="box2"> -->
+        <table class="fixed">
+            <tr>
+                <th colspan="2">IT</th>
+            </tr>
+            <tr>
+                <th>Sub-Section</th>
+                <th>Percentage</th>
+            </tr>
+            {% for result in results|slice:":2" %}
+            <tr>
+
+                <td>{{result.title}}</td>
+                <td>{{result.percentage}}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+        <!-- </div> -->
+    </div>
+</body>
+
+</html>
